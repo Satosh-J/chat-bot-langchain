@@ -7,6 +7,7 @@ name = "pypi"
 discord = "*"
 openai = "*"
 langchain = "*"
+python-dotenv = {version = "*", extras = ["smile_env"]}
 
 [dev-packages]
 

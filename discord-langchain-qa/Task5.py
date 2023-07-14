@@ -1,9 +1,8 @@
 import discord
 from discord.ext import commands
 import openai
-from langchain import LangChain
-
-openai.api_key = "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"
+# from langchain import LangChain
+from dotenv import dotenv_values
 
 # chain = LangChain("gpt-3.5-turbo")
 
@@ -12,6 +11,13 @@ intents.typing = False
 intents.presences = False
 
 client = commands.Bot(command_prefix='!', intents=intents)
+
+config = dotenv_values(".env")
+
+bot_token = config["BOT_TOKEN"]
+api_key = config["API_KEY"]
+
+openai.api_key = api_key
 
 
 @client.event
@@ -47,4 +53,4 @@ def get_name_joke(name):
     return f"Why did {name} go to the store? To buy some new jokes!"
 
 
-client.run("MTEyOTA2NDc5NzcwMzUxMjE1NQ.GGtwH5.JeqV7Plq-7N9GrpeAXvXOXK0x4W87sOT0E27Xg")
+client.run(bot_token)

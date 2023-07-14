@@ -1,11 +1,17 @@
 import discord
 from discord.ext import commands
+from dotenv import dotenv_values
+import os
 
 intents = discord.Intents.default()
 intents.typing = False
 intents.presences = False
 
 client = commands.Bot(command_prefix='!', intents=intents)
+
+config = dotenv_values(".env")
+
+bot_token = config["BOT_TOKEN"]
 
 
 @client.event
@@ -26,5 +32,5 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-client.run('MTEyOTA2NDc5NzcwMzUxMjE1NQ.GGtwH5.JeqV7Plq-7N9GrpeAXvXOXK0x4W87sOT0E27Xg')
+client.run(bot_token)
 
